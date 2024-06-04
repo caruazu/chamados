@@ -4,6 +4,9 @@ const Dashboard = () => {
   return (
     <div>
       <ChamadoCard/>
+      <ChamadoCard/>
+      <ChamadoCard/>
+      <ChamadoCard/>
     </div>
   )
 }
