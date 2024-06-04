@@ -2,3 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .icon {
+    @apply 
+      text-default-text
+      text-xl
+    ;
+  }
+
+}
