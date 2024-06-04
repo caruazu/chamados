@@ -1,7 +1,9 @@
+import ChamadoCard from "./(components)/ChamadoCard"
+
 const Dashboard = () => {
   return (
     <div>
-      HOME
+      <ChamadoCard/>
     </div>
   )
 }
