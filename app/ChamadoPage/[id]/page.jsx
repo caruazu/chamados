@@ -1,8 +1,10 @@
+import ChamadoForm from "@/app/(components)/ChamadoForm"
 
 const ChamadoPage = ({params}) => {
   return (
     <div>
-      Page Chamado {params.id}
+
+    <ChamadoForm/>
     </div>
   )
 }
