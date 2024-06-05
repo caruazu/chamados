@@ -1,9 +1,8 @@
-# chamados
+# Chamados
 
 Um app para gerenciar um setor de suporte em TI
 
-## para iniciar:
-
+## Para iniciar:
 
 ```bash
 npm run dev
