@@ -6,7 +6,8 @@ export const fetchCache = "force-no-store";
 
 const getChamados = async () => {
 	try {
-		const res = await fetch("http://localhost:3000/api/Chamados", {
+		
+		const res = await fetch(`${process.env.APP_URL}/api/Chamados`, {
 			cache: "no-store",
 		});
 
