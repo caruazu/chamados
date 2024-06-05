@@ -2,8 +2,10 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-const ChamadoForm = () => {
+const ChamadoForm = ({chamado}) => {
     const router = useRouter();
+
+    const MODO_EDICAO = chamado._id === "new" ? false : true;
 
     const inicioChamadoDados = {
         titulo: "",
@@ -13,6 +15,16 @@ const ChamadoForm = () => {
         status: "aberto",
         categoria: "Problema de Hardware",
     };
+
+    if (MODO_EDICAO) {
+        inicioChamadoDados["titulo"] = chamado.titulo;
+        inicioChamadoDados["descricao"] = chamado.descricao;
+        inicioChamadoDados["prioridade"] = chamado.prioridade;
+        inicioChamadoDados["progresso"] = chamado.progresso;
+        inicioChamadoDados["status"] = chamado.status;
+        inicioChamadoDados["categoria"] = chamado.categoria;
+    }
+    
 
     const [formData, setFormData] = useState(inicioChamadoDados);
 
@@ -28,19 +40,37 @@ const ChamadoForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await fetch(
-            "/api/Chamados",
-            {
-                method: "POST",
-                body: JSON.stringify({ formData }),
-                "Content-Type": "application/json",
-            }
-        );
 
-        if (!res.ok) {
-            throw new Error("Falha ao criar chamado");
+        if(MODO_EDICAO){
+            const res = await fetch(
+                `/api/Chamados/${chamado._id}`,
+                {
+                    method: "PUT",
+                    headers: {
+                    "Content-type": "application/json",
+                    },
+                    body: JSON.stringify({ formData }),
+                }
+            );
+
+            if (!res.ok) {
+                throw new Error("Falha ao atualizar o chamado");
+            }
         }
-        
+        else {
+            const res = await fetch(
+                "/api/Chamados",
+                {
+                    method: "POST",
+                    body: JSON.stringify({ formData }),
+                    "Content-Type": "application/json",
+                }
+            );
+
+            if (!res.ok) {
+                throw new Error("Falha ao criar o chamado");
+            }
+        }
         router.refresh();
         router.push("/");
     };   
@@ -52,7 +82,7 @@ const ChamadoForm = () => {
                 method="post"
                 className="flex flex-col gap-3 w-1/2"
             >
-                <h3>Crie seu chamado</h3>
+                <h3>{ MODO_EDICAO ? "Edite o chamado" : "Crie seu chamado"}</h3>
                 <label>Título</label>
                 <input
                     id="titulo"
@@ -156,8 +186,8 @@ const ChamadoForm = () => {
 
                 <input
                     type="submit"
-                    className="btn max-w-xs"
-                    value={"Criar chamado"}
+                    className="btn"
+                    value="Salvar"
                 />
             </form>
         </div>

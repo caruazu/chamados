@@ -1,12 +1,35 @@
-import ChamadoForm from "@/app/(components)/ChamadoForm"
+import ChamadoForm from "@/app/(components)/ChamadoForm";
 
-const ChamadoPage = ({params}) => {
-  return (
-    <div>
+const getChamadoById = async (id) => {
+  try {
+    const res = await fetch(`http://localhost:3000/api/Chamados/${id}`, {
+      cache: "no-store",
+    });
 
-    <ChamadoForm/>
-    </div>
-  )
-}
+    if (!res.ok) {
+      throw new Error("Falha ao buscar o chamado");
+    }
+
+    return res.json();
+
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+let atualizarChamadosDados ={};
+
+const ChamadoPage = async ({params}) => {
+  const MODO_EDICAO = params.id === "new" ? false : true;
+
+  if (MODO_EDICAO) {
+    atualizarChamadosDados = await getChamadoById(params.id);
+    atualizarChamadosDados = atualizarChamadosDados.foundChamado;
+  } else {
+    atualizarChamadosDados = {_id: "new",}
+  };
+
+  return (<ChamadoForm chamado={atualizarChamadosDados}/>)
+};
 
 export default ChamadoPage

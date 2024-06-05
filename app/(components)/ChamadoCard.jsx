@@ -2,6 +2,7 @@ import DeleteBlock from './DeleteBlock'
 import PrioridadeDisplay from './PrioridadeDisplay'
 import ProgressoDisplay from './ProgressoDisplay'
 import StatusDisplay from './StatusDisplay'
+import Link from "next/link";
 
 const ChamadoCard = ({chamado}) => {
 
@@ -40,10 +41,11 @@ const ChamadoCard = ({chamado}) => {
             </div>
         </div>
 
+        <Link href={`/ChamadoPage/${chamado._id}`} style={{ display: "contents" }} >
+        
         <h4 className="mb-1">{chamado.titulo}</h4>
         <hr className="h-px  border-0 bg-page mb-2 "></hr>
         <p className="whitespace-pre-wrap">{chamado.descricao}</p>
-
 
 
         <div className="flex-grow"></div>
@@ -56,6 +58,8 @@ const ChamadoCard = ({chamado}) => {
             <StatusDisplay status={chamado.status}/>
           </div>
         </div>
+
+        </Link>
     </div>
   )
 }
