@@ -36,7 +36,7 @@ const ChamadoCard = ({chamado}) => {
         <div className="flex mb-3" >
             <PrioridadeDisplay prioridade={chamado.prioridade}/>
             <div className="ml-auto">
-                <DeleteBlock/>
+                <DeleteBlock id={chamado._id}/>
             </div>
         </div>
 
