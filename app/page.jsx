@@ -1,6 +1,9 @@
 import React from "react";
 import ChamadoCard from "./(components)/ChamadoCard";
 
+export const dynamic = 'force-dynamic'
+export const fetchCache = "force-no-store";
+
 const getChamados = async () => {
 	try {
 		const res = await fetch("http://localhost:3000/api/Chamados", {
@@ -19,6 +22,12 @@ const getChamados = async () => {
 
 const Dashboard = async () => {
 	const data = await getChamados();
+
+  if (!data?.chamadosBanco) {
+    return <p>Sem chamados.</p>;
+  }
+
+  const tickets = data.tickets;
 
 	const chamados = data.chamadosBanco;
 
