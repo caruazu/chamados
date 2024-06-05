@@ -3,8 +3,25 @@ import PrioridadeDisplay from './PrioridadeDisplay'
 import ProgressoDisplay from './ProgressoDisplay'
 import StatusDisplay from './StatusDisplay'
 
-const ChamadoCard = () => {
-  return (
+const ChamadoCard = ({chamado}) => {
+
+    function conversorDatas(timestamp) {
+        const options = {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true,
+        };
+    
+        const data = new Date(timestamp);
+        const dataFormatada = data.toLocaleString("pt-br", options);
+    
+        return dataFormatada;
+    }
+
+    return (
     <div 
         className="
             flex
@@ -17,26 +34,26 @@ const ChamadoCard = () => {
         ">
 
         <div className="flex mb-3" >
-            <PrioridadeDisplay/>
+            <PrioridadeDisplay prioridade={chamado.prioridade}/>
             <div className="ml-auto">
                 <DeleteBlock/>
             </div>
         </div>
 
-        <h4 className="mb-1">Título do chamado</h4>
+        <h4 className="mb-1">{chamado.titulo}</h4>
         <hr className="h-px  border-0 bg-page mb-2 "></hr>
-        <p className="whitespace-pre-wrap">descrição bla bla</p>
+        <p className="whitespace-pre-wrap">{chamado.descricao}</p>
 
 
 
         <div className="flex-grow"></div>
         <div className="flex mt-2">
           <div className="flex flex-col">
-            <p className="text-xs  my-1">10/01/2020</p>
-            <ProgressoDisplay/>
+            <p className="text-xs  my-1">{conversorDatas(chamado.createdAt)}</p>
+            <ProgressoDisplay progresso={chamado.progresso}/>
           </div>
           <div className="ml-auto  flex items-end">
-            <StatusDisplay/>
+            <StatusDisplay status={chamado.status}/>
           </div>
         </div>
     </div>

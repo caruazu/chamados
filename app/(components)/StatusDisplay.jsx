@@ -1,6 +1,26 @@
 import React from 'react'
 
-const StatusDisplay = () => {
+const StatusDisplay = ({status}) => {
+
+    const getCor = (status) => {
+        let cor;
+
+        switch (status.toLowerCase()) {
+          case "concluido":
+            return "bg-green-200";
+    
+          case "atendendo":
+            return "bg-yellow-200";
+    
+          case "aberto":
+            return "bg-red-200";
+
+          default:
+            cor = "bg-slate-700";
+        }
+        return cor;
+    };
+
   return (
     <span
         className={`
@@ -11,10 +31,10 @@ const StatusDisplay = () => {
             text-xs 
             font-semibold 
             text-gray-700
-            bg-green-200
+            ${getCor(status)}
         `}
     >
-     Feito
+    {status}
     </span>
   )
 }

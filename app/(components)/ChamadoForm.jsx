@@ -28,14 +28,17 @@ const ChamadoForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await fetch("/api/Chamados", {
-            method: "POST",
-            body: JSON.stringify({ formData }),
-            "Content-Type": "application/json",
-        });
+        const res = await fetch(
+            "/api/Chamados",
+            {
+                method: "POST",
+                body: JSON.stringify({ formData }),
+                "Content-Type": "application/json",
+            }
+        );
 
         if (!res.ok) {
-            throw new Error("Failed to create ticket");
+            throw new Error("Falha ao criar chamado");
         }
         
         router.refresh();
