@@ -2,7 +2,7 @@ import ChamadoForm from "@/app/(components)/ChamadoForm";
 
 const getChamadoById = async (id) => {
 	try {
-		const res = await fetch(`${process.env.APP_URL}//api/Chamados/${id}`, {
+		const res = await fetch(`${process.env.APP_URL}/api/Chamados/${id}`, {
 			cache: "no-store",
 		});
 

@@ -8,7 +8,7 @@ const DeleteBlock = ({ id }) => {
 	const router = useRouter();
 
 	const deleteChamado = async () => {
-		const res = await fetch(`${process.env.APP_URL}/api/Chamados/${id}`, {
+		const res = await fetch(`/api/Chamados/${id}`, {
 			method: "DELETE",
 		});
 

@@ -14,7 +14,7 @@ const Nav = () => {
 				</Link>
 			</div>
 			<div>
-				<p className=" text-default-text">
+				<p className="font-bold text-white">
 					<a href="https://www.caruazu.com/">by Caruazu</a>
 				</p>
 			</div>

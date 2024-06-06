@@ -22,7 +22,7 @@ const ChamadoCard = ({ chamado }) => {
 	}
 
 	return (
-		<div className="flex flex-col hover:bg-card-hover-card rounded-md shadow-lg p-3 m-2">
+		<div className="flex flex-col bg-card-accent hover:bg-card-accent-hover rounded-md shadow-lg p-3 m-2">
 			<div className="flex mb-3">
 				<PrioridadeDisplay prioridade={chamado.prioridade} />
 				<div className="ml-auto">
@@ -35,7 +35,6 @@ const ChamadoCard = ({ chamado }) => {
 				style={{ display: "contents" }}
 			>
 				<h4 className="mb-1">{chamado.titulo}</h4>
-				<hr className="h-px  border-0 bg-page mb-2 "></hr>
 				<p className="whitespace-pre-wrap">{chamado.descricao}</p>
 
 				<div className="flex-grow"></div>

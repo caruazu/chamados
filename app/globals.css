@@ -41,16 +41,16 @@
 
 @layer components {
 	.icon {
-		@apply text-default-text
+		@apply
+			text-white
 			text-xl;
 	}
 	.btn {
 		@apply hover:no-underline
 			bg-blue-accent 
 			tracking-wider
-			w-full
 			text-center 
-			text-nav 
+			text-black
 			font-bold
 			cursor-pointer
 			uppercase
@@ -60,4 +60,8 @@
 			hover:bg-blue-accent-hover
 			transition-colors block;
 	}
+	.Nav{
+		@apply text-white
+	}
+
 }

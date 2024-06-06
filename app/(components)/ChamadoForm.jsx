@@ -72,7 +72,7 @@ const ChamadoForm = ({ chamado }) => {
 			<form
 				onSubmit={handleSubmit}
 				method="post"
-				className="flex flex-col gap-3 w-1/2"
+				className="flex flex-col gap-3 w-1/2 bg-white p-5 mt-5"
 			>
 				<h3>{MODO_EDICAO ? "Edite o chamado" : "Crie seu chamado"}</h3>
 				<label>Título</label>
