@@ -57,7 +57,9 @@ Esse projeto foi disponibilizado via [Vercel](https://vercel.com/) e [MongoDB At
 
 ### Mobile
 
-<p align="center">
-<img align="left" src="screenshots/mobile-home.png" width="50%" height="50%" />
-<img align="right" src="screenshots/mobile-form.png" width="50%" height="50%" />
-</p>
+<table>
+  <tr>
+    <td><img src="screenshots/mobile-home.png" /></td>
+    <td><img src="screenshots/mobile-form.png" /></td>
+  </tr>
+</table>
